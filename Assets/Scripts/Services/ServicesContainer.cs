@@ -7,6 +7,7 @@ public class ServicesContainer : MonobehaviourSystem
     [SerializeField] private HandView _minuteHand;
     [SerializeField] private HandView _hourHand;
     [SerializeField] private DigitView _digitView;
+    [SerializeField] private TimeService _timeService;
 
     protected ClockView ClockView => _clockView;
     protected HandView SecondHand => _secondHand;
@@ -35,6 +36,6 @@ public class ServicesContainer : MonobehaviourSystem
         ServiceLocator.Instance.Bind(_minuteHand, MinuteHandViewModel);
         ServiceLocator.Instance.Bind(_hourHand, HourHandViewModel);
         ServiceLocator.Instance.Bind(_digitView, DigitViewModel);
-        ServiceLocator.Instance.Register(TimeService.Instance);
+        ServiceLocator.Instance.Register(_timeService);
     }
 }

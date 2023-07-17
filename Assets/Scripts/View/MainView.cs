@@ -69,13 +69,17 @@ public class MainViewModel : BaseViewModel
         _clock = ServiceLocator.Instance.Get<ClockViewModel>(AppStrings.KeyClock);
         _alarm = ServiceLocator.Instance.Get<AlarmViewmodel>(AppStrings.KeyAlarm);
         _timeService = ServiceLocator.Instance.Get<TimeService>();
-
-        _clock.SetHours(_timeService.GetCurrentHour());
-        _clock.SetMinutes(_timeService.GetCurrentMinute());
-        _clock.SetSeconds(_timeService.GetCurrentSecond());
+        _timeService.RaiseUpdate += OnTimeUpdated;
 
         _clock.Open();
         _alarm.Close();
+    }
+
+    private void OnTimeUpdated()
+    {
+        _clock.SetHours(_timeService.GetCurrentHour());
+        _clock.SetMinutes(_timeService.GetCurrentMinute());
+        _clock.SetSeconds(_timeService.GetCurrentSecond());
     }
 
     public void PerformAlarmButton()
