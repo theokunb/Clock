@@ -1,5 +1,19 @@
-public class ServicesContainerForAlarm : ServicesContainer
+using UnityEngine;
+
+public class ServicesContainerForAlarm : MonobehaviourSystem
 {
+    [SerializeField] private ClockView _clockView;
+    [SerializeField] private HandView _secondHand;
+    [SerializeField] private HandView _minuteHand;
+    [SerializeField] private HandView _hourHand;
+    [SerializeField] private DigitView _digitView;
+
+    protected ClockViewModel ClockViewModel;
+    protected HandViewModel SecondHandViewModel;
+    protected HandViewModel MinuteHandViewModel;
+    protected HandViewModel HourHandViewModel;
+    protected DigitViewModel DigitViewModel;
+
     public override void SystemAwake()
     {
         ClockViewModel = new AlarmViewmodel(AppStrings.KeyAlarm);
@@ -8,10 +22,10 @@ public class ServicesContainerForAlarm : ServicesContainer
         HourHandViewModel = new HandViewModel(AppStrings.KeyAlarmHourHand);
         DigitViewModel = new DigitViewModel(AppStrings.KeyAlarmDigitView);
 
-        ServiceLocator.Instance.Bind(ClockView, ClockViewModel);
-        ServiceLocator.Instance.Bind(SecondHand, SecondHandViewModel);
-        ServiceLocator.Instance.Bind(MinuteHand, MinuteHandViewModel);
-        ServiceLocator.Instance.Bind(HourHand, HourHandViewModel);
-        ServiceLocator.Instance.Bind(DigitView, DigitViewModel);
+        ServiceLocator.Instance.Bind(_clockView, ClockViewModel);
+        ServiceLocator.Instance.Bind(_secondHand, SecondHandViewModel);
+        ServiceLocator.Instance.Bind(_minuteHand, MinuteHandViewModel);
+        ServiceLocator.Instance.Bind(_hourHand, HourHandViewModel);
+        ServiceLocator.Instance.Bind(_digitView, DigitViewModel);
     }
 }

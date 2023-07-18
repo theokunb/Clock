@@ -38,16 +38,21 @@ public class ServiceLocator : MonobehaviourSystem
         return default;
     }
 
-    public void Register<T>(T service) where T : IService
+    public void Register<T>(string name, T service) where T : IService
     {
-        string name = typeof(T).Name;
-
-        if (_services.ContainsKey(name))
+        if(_services.ContainsKey(name))
         {
             return;
         }
 
         _services.Add(name, service);
+    }
+
+    public void Register<T>(T service) where T : IService
+    {
+        string name = typeof(T).Name;
+
+        Register(name, service);
     }
 
     public void Unregister<T>() where T : IService

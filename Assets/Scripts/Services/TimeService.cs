@@ -1,31 +1,28 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
-public class TimeService : MonobehaviourSystem, IService
+public abstract class TimeService : MonobehaviourSystem, IService
 {
-    public static TimeService _instance;
-
     private const int UpdateDelay = 3600;
     private float _elapseTime = 0;
 
     public event Action RaiseUpdate;
 
-    public static TimeService Instance
-    {
-        get => _instance;
-    }
-
-    public override void SystemAwake()
-    {
-        base.SystemAwake();
-        _instance = this;
-    }
+    public DateTime CurrentDateTime { get; protected set; }
 
     public override void SystemStart()
     {
         base.SystemStart();
 
-        RaiseUpdate?.Invoke();
+        StartCoroutine(TaskGetTime(() =>
+        {
+            RaiseUpdate?.Invoke();
+        },
+        () =>
+        {
+            CurrentDateTime = DateTime.Now;
+        }));
     }
 
     private void Update()
@@ -35,22 +32,23 @@ public class TimeService : MonobehaviourSystem, IService
         if(_elapseTime >= UpdateDelay)
         {
             _elapseTime = 0;
-            RaiseUpdate?.Invoke();
+
+            StartCoroutine(TaskGetTime(() =>
+            {
+                RaiseUpdate?.Invoke();
+            },
+            () =>
+            {
+                CurrentDateTime = DateTime.Now;
+            }));
         }
     }
 
-    public int GetCurrentHour()
-    {
-        return DateTime.Now.Hour;
-    }
+    protected abstract IEnumerator TaskGetTime(Action successCallback, Action errorCallback);
 
-    public int GetCurrentMinute()
-    {
-        return DateTime.Now.Minute;
-    }
+    public int GetCurrentHour() => CurrentDateTime.Hour;
 
-    public int GetCurrentSecond()
-    {
-        return DateTime.Now.Second;
-    }
+    public int GetCurrentMinute() => CurrentDateTime.Minute;
+
+    public int GetCurrentSecond() => CurrentDateTime.Second;
 }

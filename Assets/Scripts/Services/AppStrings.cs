@@ -11,4 +11,6 @@ public static class AppStrings
     public static string KeyAlarmMintumeHand = nameof(KeyAlarmMintumeHand);
     public static string KeyAlarmHourHand = nameof(KeyAlarmHourHand);
     public static string KeyAlarmDigitView = nameof(KeyAlarmDigitView);
+
+    public static string KeyWorldTimeAPI = nameof(KeyWorldTimeAPI);
 }

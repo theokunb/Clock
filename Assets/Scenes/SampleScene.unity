@@ -158,7 +158,7 @@ MonoBehaviour:
   _minuteHand: {fileID: 1120724008}
   _hourHand: {fileID: 865790387}
   _digitView: {fileID: 1509146199}
-  _timeService: {fileID: 1486405978}
+  _timeService: {fileID: 0}
 --- !u!4 &116297765
 Transform:
   m_ObjectHideFlags: 0
@@ -1199,7 +1199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1486405979}
-  - component: {fileID: 1486405978}
+  - component: {fileID: 1486405980}
   m_Layer: 0
   m_Name: TimeService
   m_TagString: Untagged
@@ -1207,19 +1207,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1486405978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1486405977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 300ffa05bff33494cb585d7645e72a77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _priority: 4
 --- !u!4 &1486405979
 Transform:
   m_ObjectHideFlags: 0
@@ -1235,6 +1222,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1486405980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486405977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c76b1b8e2b1aa844a1df544db044a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 4
 --- !u!1 &1509146195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1419,7 +1419,7 @@ MonoBehaviour:
   - {fileID: 116297764}
   - {fileID: 988988157}
   - {fileID: 1575514837}
-  - {fileID: 1486405978}
+  - {fileID: 1486405980}
 --- !u!4 &1553903554
 Transform:
   m_ObjectHideFlags: 0

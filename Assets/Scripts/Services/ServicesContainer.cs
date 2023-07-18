@@ -36,6 +36,6 @@ public class ServicesContainer : MonobehaviourSystem
         ServiceLocator.Instance.Bind(_minuteHand, MinuteHandViewModel);
         ServiceLocator.Instance.Bind(_hourHand, HourHandViewModel);
         ServiceLocator.Instance.Bind(_digitView, DigitViewModel);
-        ServiceLocator.Instance.Register(_timeService);
+        ServiceLocator.Instance.Register(AppStrings.KeyWorldTimeAPI, _timeService);
     }
 }

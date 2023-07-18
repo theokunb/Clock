@@ -68,7 +68,7 @@ public class MainViewModel : BaseViewModel
 
         _clock = ServiceLocator.Instance.Get<ClockViewModel>(AppStrings.KeyClock);
         _alarm = ServiceLocator.Instance.Get<AlarmViewmodel>(AppStrings.KeyAlarm);
-        _timeService = ServiceLocator.Instance.Get<TimeService>();
+        _timeService = ServiceLocator.Instance.Get<TimeService>(AppStrings.KeyWorldTimeAPI);
         _timeService.RaiseUpdate += OnTimeUpdated;
 
         _clock.Open();
