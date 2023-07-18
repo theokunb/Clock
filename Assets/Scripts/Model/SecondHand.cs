@@ -12,7 +12,8 @@ public class SecondHand : Hand
     {
         get
         {
-            return (int)Mathf.Floor((-CurrentAngle / AllCircle) * SecondsInMinute);
+            int number = (int)Mathf.Floor((-CurrentAngle / AllCircle) * SecondsInMinute);
+            return (number % SecondsInMinute + SecondsInMinute) % SecondsInMinute;
         }
     }
 

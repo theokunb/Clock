@@ -12,7 +12,8 @@ public class HourHand : Hand
     {
         get
         {
-            return (int)Mathf.Floor((-CurrentAngle / AllCircle) * HoursCount);
+            int number = (int)Mathf.Floor((-CurrentAngle / AllCircle) * HoursCount);
+            return (number % HoursCount + HoursCount) % HoursCount;
         }
     }
 
